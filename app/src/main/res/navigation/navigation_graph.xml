@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="jp.abetakuto.test_retrofit.MainFragment"
+        android:name="jp.abetakuto.test_retrofit.view.MainFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_main" >
     </fragment>

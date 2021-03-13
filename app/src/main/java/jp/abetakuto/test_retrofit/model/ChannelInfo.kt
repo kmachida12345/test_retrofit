@@ -1,13 +1,18 @@
 package jp.abetakuto.test_retrofit.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 data class ChannelInfo(
-        val link:String,
-        val is_adult:Int,
-        val time:String,
-        val channel:List<Channel>
+    val link: String,
+    val is_adult: Int,
+    val time: String,
+    val channel: List<Channel>
 )
 
+@Entity(tableName = "channels")
 data class Channel(
+    @PrimaryKey
     val id: String,
 ////    val bid: String,
 //    val video: Int,

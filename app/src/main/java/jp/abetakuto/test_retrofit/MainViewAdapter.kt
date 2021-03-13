@@ -1,6 +1,5 @@
 package jp.abetakuto.test_retrofit
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +11,10 @@ import jp.abetakuto.test_retrofit.model.Channel
 import timber.log.Timber
 
 
-class MainViewAdapter(private val channels: List<Channel>) :
+class MainViewAdapter :
     RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
     val TAG = "MainViewAdapter"
+    private val channels = mutableListOf<Channel>()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.text_title)
@@ -43,6 +43,13 @@ class MainViewAdapter(private val channels: List<Channel>) :
         holder.name.text = channels[position].name
         holder.title.text = channels[position].title
         holder.id.text = channels[position].id
+    }
+
+    fun addData(channels: List<Channel>) {
+        channels.forEach {
+            this.channels.add(it)
+            notifyDataSetChanged()
+        }
     }
 
 

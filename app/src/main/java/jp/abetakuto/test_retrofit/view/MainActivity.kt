@@ -1,9 +1,9 @@
-package jp.abetakuto.test_retrofit
+package jp.abetakuto.test_retrofit.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
+import jp.abetakuto.test_retrofit.R
 import timber.log.Timber
 
 @AndroidEntryPoint
