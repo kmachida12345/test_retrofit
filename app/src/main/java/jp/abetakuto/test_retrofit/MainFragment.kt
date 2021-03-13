@@ -14,10 +14,11 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainFragment: Fragment() {
+class MainFragment : Fragment() {
     val TAG = "MainFragment"
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "onCreateView: start")
         val view = inflater.inflate(R.layout.fragment_main, container, false)
@@ -40,23 +41,26 @@ class MainFragment: Fragment() {
             Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
 
             //リストにデータ反映
-            (channelList.channel.indices).forEach{
+            (channelList.channel.indices).forEach {
                 Log.d(TAG, "onCreateView: set data to list $it times")
-                listData.add(Channel(
-                    channelList.channel[it].id,
-                    channelList.channel[it].name,
-                    channelList.channel[it].title,
-                    channelList.channel[it].image))
+                listData.add(
+                    Channel(
+                        channelList.channel[it].id,
+                        channelList.channel[it].name,
+                        channelList.channel[it].title,
+                        channelList.channel[it].image
+                    )
+                )
             }
 
-        Log.d(TAG, "onCreateView: set recyclerView")
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+            Log.d(TAG, "onCreateView: set recyclerView")
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        Log.d(TAG, "onCreateView: set layoutManager")
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = layoutManager
+            Log.d(TAG, "onCreateView: set layoutManager")
+            val layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager = layoutManager
 
-        recyclerView.adapter = MainViewAdapter(listData)
+            recyclerView.adapter = MainViewAdapter(listData)
         }
 
         Log.d(TAG, "onCreateView: end")
