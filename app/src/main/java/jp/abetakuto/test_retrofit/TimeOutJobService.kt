@@ -25,7 +25,7 @@ class TimeOutJobService : JobService() {
         Timber.d("hogehogehoge onStartJob")
         scope.launch {
             applicationContext.dataStore.edit {
-                it[STATUS] = "uninitialized"
+                it[STATUS] = "logged out"
                 channelDb.channelDao().deleteAll()
             }
         }

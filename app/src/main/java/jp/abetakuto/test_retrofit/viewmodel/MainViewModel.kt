@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
     val statusFlow: LiveData<String> = app.dataStore.data
         .map { preferences ->
             // No type safety.
-            preferences[STATUS] ?: "uninitialized"
+            preferences[STATUS] ?: "logged out"
         }.asLiveData()
 
     fun fetchChannels() {
