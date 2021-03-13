@@ -9,13 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import jp.abetakuto.test_retrofit.model.Channel
+import jp.abetakuto.test_retrofit.model.api.ChannelApiInterface
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     val TAG = "MainFragment"
+
+    @Inject
+    lateinit var channelInfoApi: ChannelApiInterface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -24,12 +29,6 @@ class MainFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         Log.d(TAG, "onCreateView: set channelInfoApi")
-        val channelInfoApi = Retrofit
-            .Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://live.fc2.com")
-            .build()
-            .create(ChannelApiInterface::class.java)
 
         Log.d(TAG, "onCreateView: set listData")
         val listData = arrayListOf<Channel>()

@@ -11,10 +11,11 @@ import com.squareup.picasso.Picasso
 import jp.abetakuto.test_retrofit.model.Channel
 
 
-class MainViewAdapter(private val channels: List<Channel>) : RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
+class MainViewAdapter(private val channels: List<Channel>) :
+    RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
     val TAG = "MainViewAdapter"
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.text_title)
         val name: TextView = itemView.findViewById(R.id.text_name)
         val id: TextView = itemView.findViewById(R.id.text_id)
@@ -28,13 +29,14 @@ class MainViewAdapter(private val channels: List<Channel>) : RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d(TAG, "onCreateViewHolder: start")
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_channel_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.layout_channel_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: start")
-        if (channels[position].image.isNotEmpty()){
+        if (channels[position].image.isNotEmpty()) {
             Picasso.get().load(channels[position].image).into(holder.image)
         }
         holder.name.text = channels[position].name

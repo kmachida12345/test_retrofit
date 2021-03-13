@@ -1,4 +1,4 @@
-package jp.abetakuto.test_retrofit
+package jp.abetakuto.test_retrofit.model.api
 
 import jp.abetakuto.test_retrofit.model.ChannelInfo
 import retrofit2.http.GET
