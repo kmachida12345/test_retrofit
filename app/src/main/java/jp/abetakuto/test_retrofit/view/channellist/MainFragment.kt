@@ -1,4 +1,4 @@
-package jp.abetakuto.test_retrofit.view
+package jp.abetakuto.test_retrofit.view.channellist
 
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
@@ -61,7 +61,6 @@ class MainFragment : Fragment() {
             ComponentName(requireContext(), TimeOutJobService::class.java)
         )
             .setMinimumLatency(5000)
-            .setOverrideDeadline(10000)
             .build()
         jobScheduler.schedule(job)
     }

@@ -1,4 +1,4 @@
-package jp.abetakuto.test_retrofit.view
+package jp.abetakuto.test_retrofit.view.channellist
 
 import android.view.LayoutInflater
 import android.view.View
