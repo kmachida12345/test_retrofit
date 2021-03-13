@@ -30,10 +30,17 @@ class MainFragment : Fragment() {
             it.adapter = adapter
         }
 
-        viewModel.fetchChannels()
-
         viewModel.channels.observe(viewLifecycleOwner, {
             adapter.updateData(it)
+        })
+
+        viewModel.statusFlow.observe(viewLifecycleOwner, {
+            Timber.d("hogeeeeee $it")
+            when (it) {
+                "uninitialized" -> viewModel.fetchChannels()
+                "initialized" -> Timber.d("hoge database has already been initialized")
+                else -> Timber.e("an error occurred")
+            }
         })
 
         Timber.d("onCreateView: end")
