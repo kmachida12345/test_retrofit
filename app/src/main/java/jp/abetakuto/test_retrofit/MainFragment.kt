@@ -40,27 +40,14 @@ class MainFragment : Fragment() {
             val channelList = channelInfoApi.getChannelList()
             Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
 
-            //リストにデータ反映
-            (channelList.channel.indices).forEach {
-                Log.d(TAG, "onCreateView: set data to list $it times")
-                listData.add(
-                    Channel(
-                        channelList.channel[it].id,
-                        channelList.channel[it].name,
-                        channelList.channel[it].title,
-                        channelList.channel[it].image
-                    )
-                )
-            }
-
             Log.d(TAG, "onCreateView: set recyclerView")
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
             Log.d(TAG, "onCreateView: set layoutManager")
             val layoutManager = LinearLayoutManager(context)
             recyclerView.layoutManager = layoutManager
-
-            recyclerView.adapter = MainViewAdapter(listData)
+            Log.d(TAG, "onCreateView: set MainViewAdapter")
+            recyclerView.adapter = MainViewAdapter(channelList.channel)
         }
 
         Log.d(TAG, "onCreateView: end")
