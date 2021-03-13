@@ -14,7 +14,7 @@ import timber.log.Timber
 class MainViewAdapter :
     RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
     val TAG = "MainViewAdapter"
-    private val channels = mutableListOf<Channel>()
+    private var channels = listOf<Channel>()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.text_title)
@@ -45,11 +45,9 @@ class MainViewAdapter :
         holder.id.text = channels[position].id
     }
 
-    fun addData(channels: List<Channel>) {
-        channels.forEach {
-            this.channels.add(it)
-            notifyDataSetChanged()
-        }
+    fun updateData(channels: List<Channel>) {
+        this.channels = channels
+        notifyDataSetChanged()
     }
 
 

@@ -24,24 +24,16 @@ class MainFragment : Fragment() {
         Timber.d("onCreateView: start")
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        Timber.d("onCreateView: set channelInfoApi")
-
-        Timber.d("onCreateView: set listData")
-
-        Timber.d("onCreateView: set recyclerView")
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
-        Timber.d("onCreateView: set layoutManager")
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = layoutManager
-        Timber.d("onCreateView: set MainViewAdapter")
         val adapter = MainViewAdapter()
-        recyclerView.adapter = adapter
+        view.findViewById<RecyclerView>(R.id.recyclerView).also {
+            it.layoutManager = LinearLayoutManager(context)
+            it.adapter = adapter
+        }
 
         viewModel.fetchChannels()
 
         viewModel.channels.observe(viewLifecycleOwner, {
-            adapter.addData(it)
+            adapter.updateData(it)
         })
 
         Timber.d("onCreateView: end")
