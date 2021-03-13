@@ -40,7 +40,7 @@ class MainFragment: Fragment() {
             Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
 
             //リストにデータ反映
-            (0..channelList.channel.size).forEach{
+            (channelList.channel.indices).forEach{
                 Log.d(TAG, "onCreateView: set data to list $it times")
                 listData.add(Channel(
                     channelList.channel[it].id,
@@ -48,7 +48,6 @@ class MainFragment: Fragment() {
                     channelList.channel[it].title,
                     channelList.channel[it].image))
             }
-        }
 
         Log.d(TAG, "onCreateView: set recyclerView")
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
@@ -58,6 +57,7 @@ class MainFragment: Fragment() {
         recyclerView.layoutManager = layoutManager
 
         recyclerView.adapter = MainViewAdapter(listData)
+        }
 
         Log.d(TAG, "onCreateView: end")
         return view

@@ -35,7 +35,7 @@ class MainViewAdapter(val ChannelData: ArrayList<Channel>) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: start")
-        Picasso.get().load(ChannelData[position].image).into(holder.image)
+//        Picasso.get().load(ChannelData[position].image).into(holder.image)
         holder.name.text = ChannelData[position].name
         holder.title.text = ChannelData[position].title
         holder.id.text = ChannelData[position].id
