@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import jp.abetakuto.test_retrofit.model.Channel
+import timber.log.Timber
 
 
 class MainViewAdapter(private val channels: List<Channel>) :
@@ -23,19 +24,19 @@ class MainViewAdapter(private val channels: List<Channel>) :
     }
 
     override fun getItemCount(): Int {
-        Log.d(TAG, "getItemCount: start, size = ${channels.size}")
+        Timber.d("getItemCount: start, size = ${channels.size}")
         return channels.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Log.d(TAG, "onCreateViewHolder: start")
+        Timber.d("onCreateViewHolder: start")
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.layout_channel_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d(TAG, "onBindViewHolder: start")
+        Timber.d("onBindViewHolder: start")
         if (channels[position].image.isNotEmpty()) {
             Picasso.get().load(channels[position].image).into(holder.image)
         }

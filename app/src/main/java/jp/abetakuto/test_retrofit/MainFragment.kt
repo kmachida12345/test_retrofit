@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.abetakuto.test_retrofit.model.Channel
 import jp.abetakuto.test_retrofit.model.api.ChannelApiInterface
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -25,31 +26,31 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        Log.d(TAG, "onCreateView: start")
+        Timber.d("onCreateView: start")
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        Log.d(TAG, "onCreateView: set channelInfoApi")
+        Timber.d("onCreateView: set channelInfoApi")
 
-        Log.d(TAG, "onCreateView: set listData")
+        Timber.d("onCreateView: set listData")
         val listData = arrayListOf<Channel>()
 
         //APIデータ取得
         lifecycleScope.launch {
-            Log.d(TAG, "onCreateView: get APIdata")
+            Timber.d("onCreateView: get APIdata")
             val channelList = channelInfoApi.getChannelList()
-            Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
+            Timber.d("size=${channelList.channel.size}, res=${channelList.channel}")
 
-            Log.d(TAG, "onCreateView: set recyclerView")
+            Timber.d("onCreateView: set recyclerView")
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-            Log.d(TAG, "onCreateView: set layoutManager")
+            Timber.d("onCreateView: set layoutManager")
             val layoutManager = LinearLayoutManager(context)
             recyclerView.layoutManager = layoutManager
-            Log.d(TAG, "onCreateView: set MainViewAdapter")
+            Timber.d("onCreateView: set MainViewAdapter")
             recyclerView.adapter = MainViewAdapter(channelList.channel)
         }
 
-        Log.d(TAG, "onCreateView: end")
+        Timber.d("onCreateView: end")
         return view
     }
 
