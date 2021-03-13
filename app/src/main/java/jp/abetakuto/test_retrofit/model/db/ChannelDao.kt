@@ -17,7 +17,4 @@ interface ChannelDao {
     @Query("select * from channels")
     fun getAll(): Flow<List<Channel>>
 
-    @Query("select * from channels where id = :id")
-    suspend fun getChannel(id: String): Channel?
-
 }

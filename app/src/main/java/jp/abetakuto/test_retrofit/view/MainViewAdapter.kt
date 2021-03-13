@@ -1,4 +1,4 @@
-package jp.abetakuto.test_retrofit
+package jp.abetakuto.test_retrofit.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import jp.abetakuto.test_retrofit.R
 import jp.abetakuto.test_retrofit.model.Channel
 import timber.log.Timber
 

@@ -39,9 +39,7 @@ class MainViewModel @Inject constructor(
             Timber.d("size=${fetchedChannelInfo.channel.size}, res=${fetchedChannelInfo.channel}")
 
             fetchedChannelInfo.channel.forEach {
-                if (channelDb.channelDao().getChannel(it.id) == null) {
-                    channelDb.channelDao().insert(it)
-                }
+                channelDb.channelDao().insert(it)
             }
             app.dataStore.edit {
                 it[STATUS] = "initialized"
